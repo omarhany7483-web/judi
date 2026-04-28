@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>💙</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: #1e90ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial;
+    direction: rtl;
+    overflow: hidden;
+}
+
+.card {
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+h1 {
+    font-size: 28px;
+}
+
+.emoji {
+    font-size: 45px;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 12px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+#yes { background: #2ecc71; color: white; }
+#no { background: #e74c3c; color: white; }
+#idk { background: #f1c40f; color: black; position: absolute; }
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <div class="emoji" id="emoji">🤔</div>
+    <h1>تتوقعي علاقتنا ممكن تطور قدام ؟</h1>
+
+    <button id="yes">أيوه 💙</button>
+    <button id="no">لا ❌</button>
+    <button id="idk">الله أعلم 🤷‍♂️</button>
+</div>
+
+<script>
+let idk = document.getElementById("idk");
+let no = document.getElementById("no");
+let yes = document.getElementById("yes");
+let emoji = document.getElementById("emoji");
+
+let clicks = 0;
+
+// 🔥 كل ضغطة = حركة واحدة، وبعد 6 مرات يختفي
+idk.addEventListener("click", () => {
+
+    if (clicks < 6) {
+        let x = Math.random() * (window.innerWidth - 120);
+        let y = Math.random() * (window.innerHeight - 120);
+
+        idk.style.left = x + "px";
+        idk.style.top = y + "px";
+
+        clicks++;
+    } else {
+        idk.style.display = "none";
+    }
+});
+
+// 😳 زر لا
+no.addEventListener("click", () => {
+    emoji.textContent = "😳";
+    alert("انتي مصممة بقا 🤨\nيرجي إعادة الاختيار");
+});
+
+// ❤️ زر أيوه
+yes.addEventListener("click", () => {
+    document.body.innerHTML = `
+        <div style="text-align:center;color:white;">
+            <h1>دي الإجابة الصحيحة يا اوزتي ❤️</h1>
+            <div style="font-size:80px;">❤️</div>
+        </div>
+    `;
+
+    document.body.style.background = "#0b3d91";
+});
+</script>
+
+</body>
+</html>
